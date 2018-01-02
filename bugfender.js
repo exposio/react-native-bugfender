@@ -11,28 +11,28 @@ const { RNBugfender } = NativeModules;
  * @throws `NSInvalidArgumentException` if Bugfender has already been initialized
     with a different app token.
  **/
-function activateLogger(appToken, debug = true) {
+export function activateLogger(appToken, debug = true) {
   Platform.OS === 'ios' ? RNBugfender.activateLogger(appToken) : RNBugfender.activateLogger(appToken, debug);
 }
 
 /**
  * BFLog(...): Default log.
 **/
-function info(logText) {
+export function info(logText) {
   RNBugfender.info(logText);
 }
 
 /**
  * BFLogWarn(...): Warning log.
 **/
-function warning(logText) {
+export function warning(logText) {
   RNBugfender.warning(logText);
 }
 
 /**
  * BFLogErr(...): Error log.
 **/
-function error(logText) {
+export function error(logText) {
   RNBugfender.error(logText);
 }
 
@@ -43,21 +43,21 @@ function error(logText) {
  * @param title Short description of the issue.
  * @param text Full details of the issue. Markdown format is accepted.
  */
-function sendIssueWithTitle(title, text) {
+export function sendIssueWithTitle(title, text) {
   RNBugfender.sendIssueWithTitle(title, text);
 }
 
 /**
  * Logs all actions performed and screen changes in the application, such as button touches, swipes and gestures.
  */
-function enableUIEventLogging() {
+export function enableUIEventLogging() {
   RNBugfender.enableUIEventLogging();
 }
 
 /**
  * Set the maximum space availalbe to store local logs. This value is represented in bytes. There's a limit of 50 MB.
  **/
-function setMaximumLocalStorageSize(maxLocalStorageSize) {
+export function setMaximumLocalStorageSize(maxLocalStorageSize) {
   RNBugfender.setMaximumLocalStorageSize(maxLocalStorageSize);
 }
 
@@ -71,7 +71,7 @@ function setMaximumLocalStorageSize(maxLocalStorageSize) {
  *
  * This command can be called anytime, and will take effect the next time the device is online.
  */
-function forceSendOnce() {
+export function forceSendOnce() {
   RNBugfender.forceSendOnce();
 }
 
@@ -85,18 +85,7 @@ function forceSendOnce() {
  * This command can be called anytime, and will take effect the next time the device is online.
  * @param enabled Whether logs should be sent regardless of the Bugfender Console settings.
  */
-function setForceEnabled(enabled) {
+export function setForceEnabled(enabled) {
   RNBugfender.setForceEnabled(enabled);
 }
 
-export default {
-  activateLogger,
-  info,
-  warning,
-  error,
-  sendIssueWithTitle,
-  enableUIEventLogging,
-  setMaximumLocalStorageSize,
-  forceSendOnce,
-  setForceEnabled
-}
