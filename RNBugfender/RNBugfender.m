@@ -52,4 +52,34 @@ RCT_EXPORT_METHOD(setForceEnabled:(BOOL)enabled) {
     [Bugfender setForceEnabled: enabled];
 }
 
+RCT_EXPORT_METHOD(setDeviceString:(NSString*)key value:(NSString*)value) {
+    [Bugfender setDeviceString:value forKey:key];
+}
+
+RCT_EXPORT_METHOD(setDeviceInteger:(NSString*)key value:(NSInteger)value) {
+    [Bugfender setDeviceInteger:value forKey:key];
+}
+
+RCT_EXPORT_METHOD(setDeviceFloat:(NSString*)key value:(double)value) {
+    [Bugfender setDeviceDouble:value forKey:key];
+}
+
+RCT_EXPORT_METHOD(setDeviceBoolean:(NSString*)key value:(BOOL*)value) {
+    [Bugfender setDeviceBOOL:value forKey:key];
+}
+
+RCT_EXPORT_METHOD(removeDeviceKey:(NSString*)key) {
+    [Bugfender removeDeviceKey:key];
+}
+
+RCT_EXPORT_METHOD(getDeviceIdentifier:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+    resolve([Bugfender deviceIdentifier]);
+}
+
+RCT_EXPORT_METHOD(getSessionIdentifier:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+    resolve([Bugfender sessionIdentifier]);
+}
+
 @end
